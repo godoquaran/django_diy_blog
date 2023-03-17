@@ -1,10 +1,15 @@
 asgiref==3.6.0
 astroid==2.14.2
+certifi==2022.12.7
+charset-normalizer==3.1.0
+cloudinary==1.32.0
 colorama==0.4.6
 dill==0.3.6
 dj-database-url==1.2.0
 Django==4.1.7
+django-cloudinary-storage==0.3.0
 gunicorn==20.1.0
+idna==3.4
 isort==5.12.0
 lazy-object-proxy==1.9.0
 mccabe==0.7.0
@@ -13,8 +18,10 @@ psycopg2-binary==2.9.5
 pylint==2.16.2
 pylint-django==2.5.3
 pylint-plugin-utils==0.7
+requests==2.28.2
+six==1.16.0
 sqlparse==0.4.3
 tomlkit==0.11.6
 tzdata==2022.7
-whitenoise==6.4.0
+urllib3==1.26.15
 wrapt==1.15.0
