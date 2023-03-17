@@ -21,21 +21,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'RfUjXn2r5u7x!A%D*G-KaPdSgVkYp3s6v9y/B?E(H+MbQeThWmZq4t7w!z%C&F)J')
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'aipgg10+nb5xxb2rb^ekr8d8t#i3m14mvy2dy4bgtci=9j@!t5')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 #DEBUG = bool(os.environ.get('DJANGO_DEBUG', True))
 DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
 ALLOWED_HOSTS = []
-
-## For example, for a site URL is at 'web-production-3640.up.railway.app'
-## (replace the string below with your own site URL):
-#CSRF_TRUSTED_ORIGINS = ['https://web-production-a721.up.railway.app']
-
-# During development/for this tutorial you can instead set just the base URL
-# CSRF_TRUSTED_ORIGINS = ['https://*.railway.app']
-
 
 
 # Application definition
@@ -47,13 +39,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
     'blog.apps.BlogConfig',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -126,7 +117,7 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.1/howto/static-files/
+# https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 # The absolute path to the directory where collectstatic will collect static files for deployment.
 STATIC_ROOT = BASE_DIR / 'staticfiles'
@@ -134,7 +125,6 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 # The URL to use when referring to static files (where they will be served from)
 STATIC_URL = '/static/'
 
-# Static file serving.
 # Simplified static file serving.
 # https://pypi.org/project/whitenoise/
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
@@ -148,12 +138,3 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = '/'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
-# Update database configuration from $DATABASE_URL.
-import dj_database_url
-
-db_from_env = dj_database_url.config(conn_max_age=500)
-
-DATABASES['default'].update(db_from_env)
-
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
