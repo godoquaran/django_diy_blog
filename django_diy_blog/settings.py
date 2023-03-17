@@ -27,11 +27,11 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'RfUjXn2r5u7x!A%D*G-KaPdSgVkYp3
 #DEBUG = bool(os.environ.get('DJANGO_DEBUG', True))
 DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
-ALLOWED_HOSTS = ['web-production-a721.up.railway.app', '127.0.0.1']
+ALLOWED_HOSTS = []
 
 ## For example, for a site URL is at 'web-production-3640.up.railway.app'
 ## (replace the string below with your own site URL):
-CSRF_TRUSTED_ORIGINS = ['https://web-production-a721.up.railway.app']
+#CSRF_TRUSTED_ORIGINS = ['https://web-production-a721.up.railway.app']
 
 # During development/for this tutorial you can instead set just the base URL
 # CSRF_TRUSTED_ORIGINS = ['https://*.railway.app']
@@ -47,14 +47,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'cloudinary_storage',
-    'django.contrib.staticfiles',
-    'cloudinary',
+
     'blog.apps.BlogConfig',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -134,14 +133,11 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # The URL to use when referring to static files (where they will be served from)
 STATIC_URL = '/static/'
-#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Static file serving.
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'dzukfe0vl',
-    'API_KEY': '936466367271948',
-    'API_SECRET': '5-RXv5LYRSm2ZFEmH3wsn9krI3w'
-}
+# Simplified static file serving.
+# https://pypi.org/project/whitenoise/
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
